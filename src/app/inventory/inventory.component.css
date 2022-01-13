@@ -1,0 +1,31 @@
+.item {
+  width: 29px;
+  height: 31px;
+  object-fit: scale-down;
+  vertical-align: middle;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.empty-item {
+  width: 29px;
+  height: 31px;
+  object-fit: scale-down;
+  vertical-align: middle;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  opacity: 0;
+}
+
+.inventory {
+  width: 196px;
+  height: 287px;
+  border-style: solid;
+}

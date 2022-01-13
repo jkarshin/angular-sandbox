@@ -1,1 +1,16 @@
-<p *ngFor="let item of items">Item: {{ item.name }}</p>
+<h2>In grid:</h2>
+
+<div class="inventory">
+  <ng-container *ngFor="let item of items; index as i">
+    <img
+      *ngIf="item.name != 'Empty Item'; else emptyItem"
+      class="item"
+      [src]="item.image_path"
+      [title]="item.name"
+      (click)="onItemClick(i)"
+    />
+    <ng-template #emptyItem>
+      <img class="empty-item" [src]="item.image_path" alt="" />
+    </ng-template>
+  </ng-container>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../model/Item';
+import inventory from '../../assets/inventory.json';
 
 @Component({
   selector: 'app-inventory',
@@ -11,16 +12,14 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     console.info('Initting inventory...');
-    this.items = [
-      {
-        name: 'Bronze Dagger',
-      },
-      {
-        name: 'Fire Rune',
-      },
-      {
-        name: 'Iron Bar',
-      },
-    ];
+    this.items = inventory.inventory;
+  }
+
+  onItemClick(i: number) {
+    console.log(`You selected item at index ${i}`);
+    this.items[i] = {
+      name: 'Empty Item',
+      image_path: '',
+    };
   }
 }
