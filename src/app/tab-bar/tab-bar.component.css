@@ -1,0 +1,7 @@
+.tab {
+  display: inline-block;
+  vertical-align: text-top;
+
+  width: 50px;
+  height: 50px;
+}
