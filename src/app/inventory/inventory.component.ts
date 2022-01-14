@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Item } from '../model/Item';
-import inventory from '../../assets/inventory.json';
 import { InventoryService } from '../service/InventoryService';
 import { Subscription } from 'rxjs';
 
@@ -16,9 +15,6 @@ export class InventoryComponent implements OnInit, OnDestroy {
   constructor(private inventoryService: InventoryService) {}
 
   ngOnInit(): void {
-    // console.info('Initting inventory...');
-    // this.items = inventory.inventory;
-
     this.subscription = this.inventoryService
       .getState()
       .subscribe((items) => (this.items = items));

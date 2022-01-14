@@ -10,6 +10,7 @@ import { InventoryDescComponent } from './inventory-desc/inventory-desc.componen
 import { TabBarComponent } from './tab-bar/tab-bar.component';
 import { UIRouterModule } from '@uirouter/angular';
 import { CombinedInventoryComponent } from './combined-inventory/combined-inventory.component';
+import { WSExampleComponent } from './wsexample/wsexample.component';
 
 /** States */
 
@@ -22,13 +23,19 @@ const inventoryDescState = {
   name: 'inventoryDesc',
   component: InventoryDescComponent,
 };
+const webSocketState = { name: 'websocket', component: WSExampleComponent };
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     UIRouterModule.forRoot({
-      states: [combinedInvState, inventoryState, inventoryDescState],
+      states: [
+        combinedInvState,
+        inventoryState,
+        inventoryDescState,
+        webSocketState,
+      ],
       useHash: true,
     }),
   ],
