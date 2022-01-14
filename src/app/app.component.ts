@@ -8,17 +8,16 @@ import { WebSocketService } from './service/websocket.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   name = 'Angular ' + VERSION.major;
-  constructor(/*private webSocketService: WebSocketService*/) {}
+
+  constructor(private webSocketService: WebSocketService) {}
 
   ngOnInit(): void {
-    // console.log('Start of init');
-    // this.webSocketService.connect('ws://localhost:8080');
-    // console.log('End of init');
+    this.webSocketService.connect('ws://localhost:8080');
+    // Dummy subscription to keep the connection alive:
+    this.webSocketService.messages$.subscribe((message) => {});
   }
 
   ngOnDestroy(): void {
-    // console.log('Start of close');
-    // this.webSocketService.close();
-    // console.log('End of close');
+    this.webSocketService.close();
   }
 }

@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { catchError, EMPTY, Observable, Subject, switchAll, tap } from 'rxjs';
 import { WebSocketSubject } from 'rxjs/webSocket';
 
+/**
+ * Quirky behavior to be aware of:
+ *
+ * The socket will automatically close once the last subscriber unsubscribes. Also,
+ * a closed socket will automatically try to reconnect if it is subscribed to,
+ * regardless of how it was closed. This includes situations where the intial connection
+ * attempt failed.
+ */
 @Injectable({ providedIn: 'root' })
 export class WebSocketService {
   private socket$: WebSocketSubject<any>;
@@ -50,6 +58,6 @@ export class WebSocketService {
   }
 
   public close() {
-    this.socket$.complete();
+    this.socket$.error({ code: 1000, reason: 'Normal closure from app.' });
   }
 }
