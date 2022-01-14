@@ -9,28 +9,32 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryDescComponent } from './inventory-desc/inventory-desc.component';
 import { TabBarComponent } from './tab-bar/tab-bar.component';
 import { UIRouterModule } from '@uirouter/angular';
-// import { UIRouterModule } from '@uirouter/angular';
+import { CombinedInventoryComponent } from './combined-inventory/combined-inventory.component';
 
 /** States */
 
+const combinedInvState = {
+  name: 'combinedInv',
+  component: CombinedInventoryComponent,
+};
 const inventoryState = { name: 'inventory', component: InventoryComponent };
 const inventoryDescState = {
   name: 'inventoryDesc',
   component: InventoryDescComponent,
 };
-// TODO combined?
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     UIRouterModule.forRoot({
-      states: [inventoryState, inventoryDescState],
+      states: [combinedInvState, inventoryState, inventoryDescState],
       useHash: true,
     }),
   ],
   declarations: [
     AppComponent,
+    CombinedInventoryComponent,
     HelloComponent,
     InventoryComponent,
     InventoryDescComponent,
